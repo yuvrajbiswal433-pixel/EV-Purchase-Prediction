@@ -4,7 +4,7 @@ import pandas as pd
 import joblib
 
 # Import custom preprocessing classes
-from preprocessing import dropper, ordinalencoder, OHEEncoder
+from api.preprocessing import dropper, ordinalencoder, OHEEncoder
 
 
 # --------------------------------------------------
