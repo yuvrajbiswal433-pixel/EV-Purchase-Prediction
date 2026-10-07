@@ -2,8 +2,13 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 import pandas as pd
 import joblib
+import sys
 
-# Import custom preprocessing classes
+from api import preprocessing
+
+# The pickle was created with the module name "preprocessing"
+sys.modules["preprocessing"] = preprocessing
+
 from api.preprocessing import dropper, ordinalencoder, OHEEncoder
 
 
