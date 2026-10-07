@@ -22,7 +22,7 @@ app = FastAPI(
 # Load trained ML pipeline
 # --------------------------------------------------
 
-model = joblib.load("ev_purchase_model.pkl")
+model = joblib.load("api/ev_purchase_model.pkl")
 
 
 # --------------------------------------------------
