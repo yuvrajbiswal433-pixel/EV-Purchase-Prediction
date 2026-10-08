@@ -1,5 +1,11 @@
 import streamlit as st
 import requests
+import os
+
+# Backend API URL
+# Local Docker: http://backend:8000
+# Render: set API_URL environment variable
+API_URL = os.getenv("API_URL", "http://backend:8000")
 
 st.title("🚗 EV Purchase Prediction")
 
@@ -110,18 +116,24 @@ if st.button("Predict"):
         "Range_Anxiety_Level": anxiety
     }
 
-    response = requests.post(
-    "http://backend:8000/predict",
-    json=data
-)
+    try:
+        response = requests.post(
+            f"{API_URL}/predict",
+            json=data
+        )
 
-    if response.status_code == 200:
+        if response.status_code == 200:
 
-        result = response.json()
+            result = response.json()
 
-        st.success(result)
+            st.success(result)
 
-    else:
+        else:
 
-        st.error(f"API Error: {response.status_code}")
-        st.write(response.text)
+            st.error(f"API Error: {response.status_code}")
+            st.write(response.text)
+
+    except requests.exceptions.RequestException as e:
+
+        st.error("Could not connect to the backend.")
+        st.write(str(e))
