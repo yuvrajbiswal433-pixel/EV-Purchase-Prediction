@@ -1,0 +1,9 @@
+fastapi==0.142.2
+uvicorn==0.54.0
+streamlit==1.65.0
+pandas==3.0.6
+numpy==2.4.6
+scikit-learn==1.9.1
+scipy==1.17.1
+xgboost==2.1.4
+joblib==1.6.0

@@ -2,14 +2,7 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 import pandas as pd
 import joblib
-import sys
-
-from api import preprocessing
-
-# The pickle was created with the module name "preprocessing"
-sys.modules["preprocessing"] = preprocessing
-
-from api.preprocessing import dropper, ordinalencoder, OHEEncoder
+from preprocessing import dropper, ordinalencoder, OHEEncoder
 
 
 # --------------------------------------------------
@@ -27,7 +20,7 @@ app = FastAPI(
 # Load trained ML pipeline
 # --------------------------------------------------
 
-model = joblib.load("api/ev_purchase_model.pkl")
+model = joblib.load("ev_purchase_model.pkl")
 
 
 # --------------------------------------------------
